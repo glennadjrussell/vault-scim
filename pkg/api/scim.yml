@@ -1,0 +1,30 @@
+openapi: "3.0.2"
+info:
+  title: "Vault SCIM Endpoint v1.0"
+  description: |
+    This API supports the provisioning of users and groups in Vault via SCIM
+  version: 1.0
+paths:
+  /Users:
+    post:
+      summary: "Provision a User"
+      description: "SCIM 2.0 endpoint for provisioning a new User"
+      operationId: NewUser
+      tags:
+        - user
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/NewUser'
+      responses:
+        '201':
+          description: User created response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+schemas:
+  NewUser:
+  User:
